@@ -11,12 +11,15 @@ function CreateExercise(props) {
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
-    axios.get("http://localhost:5000/users").then((res) => {
-      if (res.data.length > 0) {
-        setUsers(res.data.map((user) => user.username));
-        setUsername(res.data[0].username);
-      }
-    });
+    axios
+      .get("http://localhost:5000/users")
+      .then((res) => {
+        if (res.data.length > 0) {
+          setUsers(res.data.map((user) => user.username));
+          setUsername(res.data[0].username);
+        }
+      })
+      .catch((err) => console.log(err));
     return () => {
       //
     };
